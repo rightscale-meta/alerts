@@ -1,6 +1,6 @@
 alerts:
 - name: cpu busy
-  description: ''
+  description: 'Raise an alert if the idle time is too low.'
   file: cpu-0/cpu-idle
   value: value
   condition: "<"
@@ -8,7 +8,7 @@ alerts:
   duration: '3'
   escalation_name: warning
 - name: cpu I/O wait
-  description: ''
+  description: 'Raise an alert disk io is too high.'
   file: cpu-0/cpu-wait
   value: value
   condition: ">"
@@ -16,7 +16,7 @@ alerts:
   duration: '15'
   escalation_name: warning
 - name: cpu overloaded
-  description: ''
+  description: 'Raise an alert when the cpu idle time is too low.'
   file: cpu-0/cpu-idle.value
   value: value
   condition: ">"
@@ -24,7 +24,7 @@ alerts:
   duration: '5'
   escalation_name: critical
 - name: high network rx activity
-  description: ''
+  description: 'Raise an alert if the amount of network data received is too high.'
   file: interface/if_octets-eth0
   value: rx
   condition: ">"
@@ -32,7 +32,7 @@ alerts:
   duration: '30'
   escalation_name: critical
 - name: high network tx activity
-  description: ''
+  description: 'Raise an alert if the amount of network data transmitted is too high.'
   file: interface/if_octets-eth0
   value: tx
   condition: ">"
@@ -40,7 +40,7 @@ alerts:
   duration: '10'
   escalation_name: critical
 - name: instance not responding
-  description: ''
+  description: 'Raise an alert if the instance fails to send monitoring information for 5 minutes.'
   file: cpu-0/cpu-idle
   value: value
   condition: "=="
@@ -48,7 +48,7 @@ alerts:
   duration: '5'
   escalation_name: critical
 - name: instance stranded
-  description: ''
+  description: 'Raise an alert if the instance enters the stranded state.'
   file: RS/server-failure
   value: state
   condition: "=="
@@ -56,23 +56,15 @@ alerts:
   duration: '1'
   escalation_name: critical
 - name: instance terminated
-  description: ''
+  description: 'Raise an alert if the instance has been terminated abnormally, i.e. not through the RightScale interface or by an elasticity daemon resizing server arrays.'
   file: RS/server
   value: state
   condition: "=="
   threshold: terminated
   duration: '1'
   escalation_name: critical
-- name: low space in mnt partition
-  description: ''
-  file: df/df-mnt
-  value: free
-  condition: "<"
-  threshold: '10000000000'
-  duration: '5'
-  escalation_name: critical
 - name: low space in root partition
-  description: ''
+  description: 'Raise an alert if the available space in the root partition is too low.'
   file: df/df-root
   value: free
   condition: "<"
@@ -80,7 +72,7 @@ alerts:
   duration: '5'
   escalation_name: critical
 - name: low swap space
-  description: ''
+  description: 'Raise alert if the free swap space is too low.'
   file: swap/swap-free
   value: value
   condition: "<"
@@ -88,7 +80,7 @@ alerts:
   duration: '5'
   escalation_name: critical
 - name: memory low
-  description: ''
+  description: 'Raise an alert if free memory is too low.'
   file: memory/memory-free
   value: value
   condition: "<"
@@ -96,7 +88,7 @@ alerts:
   duration: '1'
   escalation_name: critical
 - name: out of memory
-  description: ''
+  description: 'Raise an alert when the server is out of free memory.'
   file: memory/memory-free
   value: value
   condition: "=="
